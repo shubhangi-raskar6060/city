@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+    <head>
+        <title>city in </title>
+        <style>
+            * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #eaf1f1;
+            border-radius: 4px;
+            display: none;
+            color: #333;
+        }
+
+        .result h3 {
+            margin-bottom: 10px;
+        }
+
+        .result p {
+            font-size: 16px;
+        }
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>City Information</h1>
+            <div class="form-group">
+                <label for="cityName">Enter City Name:</label>
+                <input type="text" id="cityName" placeholder="Enter city here">
+            </div>
+            <button onclick="getCityInfo()">Get City Info</button>
+            <div class="result" id="result">
+                <h3>City Information</h3>
+                <p><strong>City:</strong> <span id="city"></span></p>
+                <p><strong>Country:</strong> <span id="country"></span></p>
+                <p><strong>Population:</strong> <span id="population"></span></p>
+                <p><strong>Timezone:</strong> <span id="timezone"></span></p>
+            </div>
+        </div>
+        <script>
+            function getCityInfo() {
+                const city = document.getElementById("cityName").value.trim();
+                const resultContainer = document.getElementById("result");
+                
+                
+                const cityData = {
+                    "New York": {
+                        country: "USA",
+                        population: "8.4 million",
+                        timezone: "EST (UTC -5)"
+                    },
+                    "Tokyo": {
+                        country: "Japan",
+                        population: "14 million",
+                        timezone: "JST (UTC +9)"
+                    },
+                    "London": {
+                        country: "United Kingdom",
+                        population: "9 million",
+                        timezone: "GMT (UTC +0)"
+                    },
+                    "Paris": {
+                        country: "France",
+                        population: "2.1 million",
+                        timezone: "CET (UTC +1)"
+                    },
+                    "Sydney": {
+                        country: "Australia",
+                        population: "5.3 million",
+                        timezone: "AEDT (UTC +11)"
+                    }
+                };
+    
+                  resultContainer.style.display = 'none';
+                
+                if (city === "") {
+                    alert("Please enter a city name.");
+                    return;
+                }
+    
+                const cityInfo = cityData[city];
+    
+                if (cityInfo) {
+                    document.getElementById("city").textContent = city;
+                    document.getElementById("country").textContent = cityInfo.country;
+                    document.getElementById("population").textContent = cityInfo.population;
+                    document.getElementById("timezone").textContent = cityInfo.timezone;
+    
+                    resultContainer.style.display = 'block';
+                } else {
+                    alert("City information not available.");
+                }
+            }
+        </script>
+    
+    
+    </body>
+</html>
